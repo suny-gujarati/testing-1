@@ -8,17 +8,14 @@ on:
 
   workflow_dispatch:
 
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   Unit-test:
     runs-on: ubuntu-latest
-
+    concurrency:
+      group: example-group
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
-
       - name: Run a unit tests script
         run: | 
               echo Hello, running unit tests!
@@ -26,7 +23,9 @@ jobs:
   
   Build-jar:
     runs-on: ubuntu-latest
-
+    concurrency:
+      group: example-group
+      cancel-in-progress: true
     steps:
       - name: Run a build jar script
         run: | 
@@ -35,7 +34,9 @@ jobs:
   
   Code-analysis:
     runs-on: ubuntu-latest
-
+    concurrency:
+      group: example-group
+      cancel-in-progress: true
     steps:
       - name: Run a code analysis script
         run: | 
