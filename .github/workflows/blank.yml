@@ -35,3 +35,30 @@ jobs:
         run: | 
               echo Hello, we are code analysis!
               sleep 5s
+              
+  Release:
+    needs: Code-analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a code analysis script
+        run: | 
+              echo Hello, we are code analysis!
+              sleep 5s   
+              
+  Deploy:
+    needs: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a code analysis script
+        run: | 
+              echo Hello, we are code analysis!
+              sleep 5s
+
+  Trigger-AT:
+    needs: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a code analysis script
+        run: | 
+              echo Hello, we are code analysis!
+              sleep 5s
