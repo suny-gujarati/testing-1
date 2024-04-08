@@ -11,9 +11,6 @@ on:
 jobs:
   Unit-test:
     runs-on: ubuntu-latest
-    concurrency:
-      group: example-group
-      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
       - name: Run a unit tests script
@@ -22,10 +19,8 @@ jobs:
               sleep 5s
   
   Build-jar:
+    needs: Unit-test
     runs-on: ubuntu-latest
-    concurrency:
-      group: example-group
-      cancel-in-progress: true
     steps:
       - name: Run a build jar script
         run: | 
@@ -33,10 +28,8 @@ jobs:
               sleep 5s
   
   Code-analysis:
+    needs: Build-jar
     runs-on: ubuntu-latest
-    concurrency:
-      group: example-group
-      cancel-in-progress: true
     steps:
       - name: Run a code analysis script
         run: | 
