@@ -34,7 +34,7 @@ jobs:
       - name: Run a code analysis script
         run: | 
               echo Hello, we are code analysis!
-              sleep 5s
+              sleep 35s
               
   Release:
     needs: Code-analysis
